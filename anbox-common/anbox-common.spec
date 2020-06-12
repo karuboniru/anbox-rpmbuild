@@ -21,7 +21,7 @@ BuildArch:      noarch
 This package contains tho udev rules necessary to use the Anbox kernel modules.
 
 %prep
-%setup -q -n anbox-modules-%{commit}
+%autosetup -n anbox-modules-%{commit}
 
 %build
 # Nothing to do

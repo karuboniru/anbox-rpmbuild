@@ -26,7 +26,7 @@ Development files for properties-cpp, a simple convenience library for handling
 properties and signals in C++11.
 
 %prep
-%setup -q -n %{name}-%{version}+%{extrarel}
+%autosetup -p1 -n %{name}-%{version}+%{extrarel}
 # Debian packaging stuff
 sed -i "/include(cmake\/PrePush.cmake)/d" CMakeLists.txt
 # Code coverage is not needed
