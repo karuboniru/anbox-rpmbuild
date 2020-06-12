@@ -1,6 +1,6 @@
-%global commit          c898810050df67adccd64a84b2d763250a42e722
+%global commit          e0a237e571989987806b32881044c539db25e3e1
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20200612
+%global snapshotdate    20191205
 
 Name:           anbox-common
 Summary:        Common package for Anbox Kernel module
@@ -21,7 +21,7 @@ BuildArch:      noarch
 This package contains tho udev rules necessary to use the Anbox kernel modules.
 
 %prep
-%autosetup -n anbox-modules-%{commit}
+%setup -q -n anbox-modules-%{commit}
 
 %build
 # Nothing to do

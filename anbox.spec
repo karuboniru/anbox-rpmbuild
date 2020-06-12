@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(libpkgconf)
 BuildRequires:  binutils-devel
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  libdwarf-devel
+BuildRequires:  glm-devel
 Requires:       anbox-common
 Requires:       hicolor-icon-theme
 
