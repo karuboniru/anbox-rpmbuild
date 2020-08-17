@@ -1,19 +1,19 @@
 %global buildforkernels akmod
 %global debug_package %{nil}
 
-%global commit          e0a237e571989987806b32881044c539db25e3e1
-%global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20191205
+%global forgeurl        https://github.com/anbox/anbox-modules
+%global commit          98f0f3b3b1eeb5a6954ca15ec43e150b76369086
+%forgemeta
 
 Name:           anbox-kmod
 Summary:        Kernel module (kmod) for Anbox
 Version:        0
-Release:        0.3.%{snapshotdate}git%{shortcommit}%{?dist}
+Release:        0.3%{?dist}
 
 # https://github.com/anbox/anbox-modules/issues/27
 License:        GPLv2+
-URL:            https://github.com/anbox/anbox-modules
-Source0:        %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+URL:            %{forgeurl}
+Source:         %{forgesource}
 
 BuildRequires:  kmodtool
 BuildRequires:  elfutils-libelf-devel
@@ -34,7 +34,7 @@ packaging in various Linux distributions easier.
 # print kmodtool output for debugging purposes:
 kmodtool  --target %{_target_cpu} --repo rpmfusion --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null
 
-%autosetup -c -T -a 0
+%forgeautosetup -c -T -a 0
 
 for kernel_version  in %{?kernel_versions} ; do
   cp -a anbox-modules-%{commit} _kmod_build_${kernel_version%%___*}

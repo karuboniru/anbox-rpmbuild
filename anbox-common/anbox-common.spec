@@ -1,16 +1,16 @@
-%global commit          e0a237e571989987806b32881044c539db25e3e1
-%global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20191205
+%global forgeurl        https://github.com/anbox/anbox-modules
+%global commit          98f0f3b3b1eeb5a6954ca15ec43e150b76369086
+%forgemeta
 
 Name:           anbox-common
 Summary:        Common package for Anbox Kernel module
 Version:        0
-Release:        0.2.%{snapshotdate}git%{shortcommit}%{?dist}
+Release:        0.3%{?dist}
 
 # https://github.com/anbox/anbox-modules/issues/27
 License:        GPLv2+
-URL:            https://github.com/anbox/anbox-modules
-Source0:        %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+URL:            %{forgeurl}
+Source:         %{forgesource}
 
 Provides:       anbox-kmod-common = %{version}
 Requires:       anbox-kmod >= %{version}
@@ -21,7 +21,7 @@ BuildArch:      noarch
 This package contains tho udev rules necessary to use the Anbox kernel modules.
 
 %prep
-%autosetup -n anbox-modules-%{commit}
+%forgeautosetup
 
 %build
 # Nothing to do

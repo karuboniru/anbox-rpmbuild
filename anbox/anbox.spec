@@ -1,15 +1,16 @@
-%global commit          c898810050df67adccd64a84b2d763250a42e722
-%global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20200612
+%global forgeurl        https://github.com/anbox/anbox
+%global commit          4d84370b73852e5ca755a28d0304c4d7d0aa589c
+%forgemeta
+
 
 Name:       anbox
 Version:    0
-Release:    0.2.%{snapshotdate}git%{shortcommit}%{?dist}
+Release:    0.3%{?dist}
 Summary:    Container-based approach to boot a full Android system on a GNU/Linux system
 
 License:    GPLv3+
-URL:        https://github.com/anbox/anbox
-Source0:    %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+URL:        %{forgeurl}
+Source:     %{forgesource}
 # From Debian
 Source1:    anbox-container-manager.service
 Source2:    anbox-session-manager.service
@@ -65,7 +66,7 @@ pipes to communicate with the host system and sends all hardware access commands
 through these.
 
 %prep
-%autosetup -p1 -n anbox-%{commit}
+%forgeautosetup -p1
 # Gmock cmake detection is specific to Debian
 sed -i "/find_package(GMock)/d" CMakeLists.txt
 # As a result, disable tests
@@ -73,15 +74,12 @@ sed -i "/add_subdirectory(tests)/d" CMakeLists.txt
 cp %{S:5} .
 
 %build
-mkdir build && cd build
-%cmake .. -DANBOX_VERSION=%{version}-%{release} \
+%cmake    -DANBOX_VERSION=%{version}-%{release} \
           -DANBOX_VERSION_SUFFIX=Fedora
-%make_build
+%cmake_build
 
 %install
-pushd build
-%make_install
-popd
+%cmake_install
 install -Dpm 0644 snap/gui/icon.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/anbox.png
 install -Dpm 0755 scripts/anbox-bridge.sh %{buildroot}%{_datadir}/anbox/
 install -Dpm 0755 scripts/anbox-shell.sh %{buildroot}%{_datadir}/anbox/
