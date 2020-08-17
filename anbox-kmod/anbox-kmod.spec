@@ -34,7 +34,7 @@ packaging in various Linux distributions easier.
 # print kmodtool output for debugging purposes:
 kmodtool  --target %{_target_cpu} --repo rpmfusion --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null
 
-%forgeautosetup -c -T -a 0
+%forgeautosetup
 
 for kernel_version  in %{?kernel_versions} ; do
   cp -a anbox-modules-%{commit} _kmod_build_${kernel_version%%___*}
