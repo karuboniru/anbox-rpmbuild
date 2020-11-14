@@ -1,5 +1,5 @@
 %global forgeurl        https://github.com/anbox/anbox
-%global commit          4d84370b73852e5ca755a28d0304c4d7d0aa589c
+%global commit          25e288436c937e7f4da56eac50167a549ac79294
 %forgemeta
 
 
