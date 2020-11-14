@@ -5,7 +5,7 @@
 
 Name:       anbox
 Version:    0
-Release:    0.3%{?dist}
+Release:    0.4%{?dist}
 Summary:    Container-based approach to boot a full Android system on a GNU/Linux system
 
 License:    GPLv3+
