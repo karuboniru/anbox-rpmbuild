@@ -5,7 +5,7 @@
 
 Name:       anbox
 Version:    0
-Release:    0.4%{?dist}
+Release:    0.5%{?dist}
 Summary:    Container-based approach to boot a full Android system on a GNU/Linux system
 
 License:    GPLv3+
@@ -17,7 +17,7 @@ Source2:    anbox-session-manager.service
 Source3:    anbox.1
 Source4:    anbox.desktop
 Source5:    README.Fedora
-Patch0:     0001-convert-script-to-python3.patch
+# Patch0:     0001-convert-script-to-python3.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
